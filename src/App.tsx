@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ProductDetails } from "./components/ProductDetails";
 import { ProductList } from "./components/ProductList";
+import { SearchBar } from "./components/SearchBar";
 import { initialProducts } from "./data/products";
 import type { IProduct } from "./types/product";
 
@@ -9,21 +10,33 @@ function App() {
   const [selectedProductId, setSelectedProductId] = useState<string | null>(
     null,
   );
+  const [query, setQuery] = useState<string>("");
+
   function handleSelect(id: string): void {
     setSelectedProductId(id);
+  }
+
+  function handleQuery(title: string): void {
+    setQuery(title);
   }
 
   const selectedProduct = state.find(
     (product) => product.id === selectedProductId,
   );
 
+  const filteredProduct = state.filter((product) =>
+    product.title.toLowerCase().includes(query.toLowerCase()),
+  );
+
   return (
     <>
       <ProductList
-        product={state}
+        product={filteredProduct}
         selectedProductId={selectedProductId}
         onSelect={handleSelect}
       />
+
+      <SearchBar query={query} setQuery={handleQuery} />
 
       <ProductDetails product={selectedProduct} />
     </>
