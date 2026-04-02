@@ -3,7 +3,7 @@ import { ProductDetails } from "./components/ProductDetails";
 import { ProductList } from "./components/ProductList";
 import { SearchBar } from "./components/SearchBar";
 import { initialProducts } from "./data/products";
-import type { IProduct } from "./types/product";
+import type { IProduct, TCategoryFilter } from "./types/product";
 
 function App() {
   const [state] = useState<IProduct[]>(initialProducts);
@@ -11,6 +11,7 @@ function App() {
     null,
   );
   const [query, setQuery] = useState<string>("");
+  const [categoryFilter, setCategoryFilter] = useState<TCategoryFilter>("all");
 
   function handleSelect(id: string): void {
     setSelectedProductId(id);
@@ -20,13 +21,22 @@ function App() {
     setQuery(title);
   }
 
+  function handleCategory(category: TCategoryFilter): void {
+    setCategoryFilter(category);
+  }
+
   const selectedProduct = state.find(
     (product) => product.id === selectedProductId,
   );
 
-  const filteredProduct = state.filter((product) =>
-    product.title.toLowerCase().includes(query.toLowerCase()),
-  );
+  const filteredProduct = state.filter((product) => {
+    const matchesQuery = product.title
+      .toLowerCase()
+      .includes(query.toLowerCase());
+    const matchesCategory =
+      categoryFilter === "all" || product.category === categoryFilter;
+    return matchesQuery && matchesCategory;
+  });
 
   return (
     <>
@@ -36,7 +46,12 @@ function App() {
         onSelect={handleSelect}
       />
 
-      <SearchBar query={query} setQuery={handleQuery} />
+      <SearchBar
+        query={query}
+        setQuery={handleQuery}
+        categoryFilter={categoryFilter}
+        setCategoryFilter={handleCategory}
+      />
 
       <ProductDetails product={selectedProduct} />
     </>
