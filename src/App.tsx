@@ -34,7 +34,7 @@ function App() {
     (product) => product.id === selectedProductId,
   );
 
-  const filteredProduct = products.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     const matchesQuery = product.title
       .toLowerCase()
       .includes(query.toLowerCase());
@@ -43,7 +43,7 @@ function App() {
     return matchesQuery && matchesCategory;
   });
 
-  const finalProducts = [...filteredProduct].sort((a, b) => {
+  const finalProducts = [...filteredProducts].sort((a, b) => {
     if (priceSort === "price-asc") {
       return a.price - b.price;
     }
@@ -65,11 +65,11 @@ function App() {
 
       <SearchBar
         query={query}
-        setQuery={handleQuery}
+        onQueryChange={handleQuery}
         categoryFilter={categoryFilter}
-        setCategoryFilter={handleCategory}
+        onCategoryChange={handleCategory}
         priceSort={priceSort}
-        setPriceSort={handlePrice}
+        onSortChange={handlePrice}
       />
 
       <ProductDetails product={selectedProduct} />
