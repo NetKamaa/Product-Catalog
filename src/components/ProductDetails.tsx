@@ -5,6 +5,9 @@ interface IProductDetails {
 }
 
 export function ProductDetails({ product }: IProductDetails) {
+  if (product === undefined) {
+    return <p>Nothing found</p>;
+  }
   return (
     <>
       <div>
