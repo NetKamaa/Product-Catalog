@@ -2,20 +2,20 @@ import type { TCategoryFilter, TSortOrder } from "../types/product";
 
 interface ISearchBar {
   query: string;
-  setQuery: (title: string) => void;
+  onQueryChange: (value: string) => void;
   categoryFilter: TCategoryFilter;
-  setCategoryFilter: (category: TCategoryFilter) => void;
+  onCategoryChange: (category: TCategoryFilter) => void;
   priceSort: TSortOrder;
-  setPriceSort: (value: TSortOrder) => void;
+  onSortChange: (value: TSortOrder) => void;
 }
 
 export function SearchBar({
   query,
-  setQuery,
+  onQueryChange: setQuery,
   categoryFilter,
-  setCategoryFilter,
+  onCategoryChange: setCategoryFilter,
   priceSort: priceSort,
-  setPriceSort: setPriceSort,
+  onSortChange: setPriceSort,
 }: ISearchBar) {
   return (
     <>
