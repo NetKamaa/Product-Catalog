@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductDetails } from "./components/ProductDetails";
 import { ProductList } from "./components/ProductList";
 import { SearchBar } from "./components/SearchBar";
@@ -54,6 +54,14 @@ function App() {
 
     return 0;
   });
+
+  useEffect(() => {
+    if (selectedProduct) {
+      document.title = selectedProduct!.title;
+      return;
+    }
+    document.title = `Products: ${finalProducts.length}`;
+  }, [selectedProduct, finalProducts.length]);
 
   return (
     <>
