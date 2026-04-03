@@ -2,20 +2,20 @@ import type { IProduct } from "../types/product";
 import { ProductCard } from "./ProductCard";
 
 interface IProductListProps {
-  product: IProduct[];
+  products: IProduct[];
   selectedProductId: string | null;
   onSelect: (id: string) => void;
 }
 
 export function ProductList({
-  product,
+  products,
   selectedProductId,
   onSelect,
 }: IProductListProps) {
   return (
     <>
       <div>
-        {product.map((product) => (
+        {products.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
