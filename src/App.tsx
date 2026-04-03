@@ -6,7 +6,7 @@ import { initialProducts } from "./data/products";
 import type { IProduct, TCategoryFilter, TSortOrder } from "./types/product";
 
 function App() {
-  const [state] = useState<IProduct[]>(initialProducts);
+  const [products] = useState<IProduct[]>(initialProducts);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(
     null,
   );
@@ -30,11 +30,11 @@ function App() {
     setPriceSort(value);
   }
 
-  const selectedProduct = state.find(
+  const selectedProduct = products.find(
     (product) => product.id === selectedProductId,
   );
 
-  const filteredProduct = state.filter((product) => {
+  const filteredProduct = products.filter((product) => {
     const matchesQuery = product.title
       .toLowerCase()
       .includes(query.toLowerCase());
@@ -58,7 +58,7 @@ function App() {
   return (
     <>
       <ProductList
-        product={finalProducts}
+        products={finalProducts}
         selectedProductId={selectedProductId}
         onSelect={handleSelect}
       />
