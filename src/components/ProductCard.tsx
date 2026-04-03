@@ -10,7 +10,7 @@ export function ProductCard({ product, isSelected, onSelect }: ICardProps) {
   return (
     <>
       <div
-        className={`${isSelected ? true : false}`}
+        className={`${isSelected ? "card-selected" : ""}`}
         onClick={() => onSelect(product.id)}
       >
         <h3>{product.title}</h3>
