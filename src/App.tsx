@@ -63,6 +63,14 @@ function App() {
     document.title = `Products: ${finalProducts.length}`;
   }, [selectedProduct, finalProducts.length]);
 
+  useEffect(() => {
+    localStorage.setItem("catalog-category", categoryFilter);
+  }, [categoryFilter]);
+
+  useEffect(() => {
+    localStorage.setItem("catalog-price", priceSort);
+  }, [priceSort]);
+
   return (
     <>
       <ProductList
