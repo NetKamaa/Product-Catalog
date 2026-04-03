@@ -14,7 +14,7 @@ export function ProductDetails({ product }: IProductDetails) {
         <h2>{product.title}</h2>
         <h4>{product.price} $</h4>
         <h4>{product.category}</h4>
-        <h4>{product.inStock}</h4>
+        <h4>{product.inStock ? "In stock" : "Out of stock"}</h4>
         <h3>{product.description}</h3>
       </div>
     </>
