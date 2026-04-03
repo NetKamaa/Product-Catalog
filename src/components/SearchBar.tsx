@@ -19,13 +19,17 @@ export function SearchBar({
 }: ISearchBar) {
   return (
     <>
+      <label htmlFor="search">Search</label>
       <input
+        id="search"
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
 
+      <label htmlFor="category">Category:</label>
       <select
+        id="category"
         value={categoryFilter}
         onChange={(e) => setCategoryFilter(e.target.value as TCategoryFilter)}
       >
@@ -35,7 +39,9 @@ export function SearchBar({
         <option value="laptops">laptops</option>
       </select>
 
+      <label htmlFor="price-sort">Sort by price:</label>
       <select
+        id="price-sort"
         value={priceSort}
         onChange={(e) => setPriceSort(e.target.value as TSortOrder)}
       >
