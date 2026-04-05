@@ -2,13 +2,13 @@ export type TCategory = "phones" | "headphones" | "laptops";
 export type TCategoryFilter = TCategory | "all";
 export type TSortOrder = "default" | "price-asc" | "price-desc";
 
-type TUUID = string;
-
 export interface IProduct {
-  id: TUUID;
+  id: string;
   title: string;
   price: number;
   category: TCategory;
   inStock: boolean;
   description: string;
 }
+
+export type TSeedProduct = Omit<IProduct, "id">;

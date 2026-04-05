@@ -2,7 +2,7 @@ import type { IProduct } from "../types/product";
 
 export const initialProducts: IProduct[] = [
   {
-    id: crypto.randomUUID(),
+    id: "1",
     title: "iPhone 17e",
     price: 719,
     category: "phones",
@@ -11,7 +11,7 @@ export const initialProducts: IProduct[] = [
       "The entry-level 2026 iPhone, featuring a 6.1-inch Super Retina XDR display and Apple Intelligence.",
   },
   {
-    id: crypto.randomUUID(),
+    id: "2",
     title: "iPhone 17",
     price: 969,
     category: "phones",
@@ -20,7 +20,7 @@ export const initialProducts: IProduct[] = [
       "The 2026 standard iPhone: a well-rounded model for everyday use, photography, and video.",
   },
   {
-    id: crypto.randomUUID(),
+    id: "3",
     title: "iPhone 17 Pro",
     price: 1329,
     category: "phones",
@@ -30,7 +30,7 @@ export const initialProducts: IProduct[] = [
   },
 
   {
-    id: crypto.randomUUID(),
+    id: "4",
     title: "AirPods 4",
     price: 149,
     category: "headphones",
@@ -39,7 +39,7 @@ export const initialProducts: IProduct[] = [
       "Apple's entry-level wireless earbuds, featuring a comfortable fit and high-quality spatial audio.",
   },
   {
-    id: crypto.randomUUID(),
+    id: "5",
     title: "AirPods Pro 3",
     price: 249,
     category: "headphones",
@@ -48,7 +48,7 @@ export const initialProducts: IProduct[] = [
       "Apple's flagship in-ear headphones with active noise cancellation and a heart rate monitor for workouts.",
   },
   {
-    id: crypto.randomUUID(),
+    id: "6",
     title: "AirPods Max 2",
     price: 579,
     category: "headphones",
@@ -58,7 +58,7 @@ export const initialProducts: IProduct[] = [
   },
 
   {
-    id: crypto.randomUUID(),
+    id: "7",
     title: "MacBook Neo",
     price: 699,
     category: "laptops",
@@ -67,7 +67,7 @@ export const initialProducts: IProduct[] = [
       "The most affordable 2026 Apple laptop: 13-inch Liquid Retina display and aluminum chassis.",
   },
   {
-    id: crypto.randomUUID(),
+    id: "8",
     title: "MacBook Air",
     price: 1199,
     category: "laptops",
@@ -76,7 +76,7 @@ export const initialProducts: IProduct[] = [
       "A lightweight and versatile Apple laptop powered by the M5 chip, perfect for school, work, development, and everyday tasks.",
   },
   {
-    id: crypto.randomUUID(),
+    id: "9",
     title: "MacBook Pro",
     price: 1929,
     category: "laptops",
