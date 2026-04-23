@@ -1,18 +1,45 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ProductDetails } from "./components/ProductDetails";
 import { ProductList } from "./components/ProductList";
 import { SearchBar } from "./components/SearchBar";
-import { initialProducts } from "./data/products";
 import type { IProduct, TCategoryFilter, TSortOrder } from "./types/product";
 
 function App() {
-  const [products] = useState<IProduct[]>(initialProducts);
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [selectedProductId, setSelectedProductId] = useState<string | null>(
     null,
   );
   const [query, setQuery] = useState<string>("");
   const [categoryFilter, setCategoryFilter] = useState<TCategoryFilter>("all");
   const [priceSort, setPriceSort] = useState<TSortOrder>("default");
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch("/api/products");
+
+        if (!response.ok) {
+          throw new Error(`Failed to load products: ${response.status}`);
+        }
+
+        const data: IProduct[] = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.log(error);
+        setError("Failed to load products");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
 
   function handleSelect(id: string): void {
     setSelectedProductId(id);
@@ -34,47 +61,37 @@ function App() {
     (product) => product.id === selectedProductId,
   );
 
-  const filteredProducts = products.filter((product) => {
-    const matchesQuery = product.title
-      .toLowerCase()
-      .includes(query.toLowerCase());
-    const matchesCategory =
-      categoryFilter === "all" || product.category === categoryFilter;
-    return matchesQuery && matchesCategory;
-  });
+  const filteredProducts = useMemo(() => {
+    return products
+      .filter((product) => {
+        const matchesQuery = product.title
+          .toLowerCase()
+          .includes(query.toLowerCase());
 
-  const finalProducts = [...filteredProducts].sort((a, b) => {
-    if (priceSort === "price-asc") {
-      return a.price - b.price;
-    }
+        const matchesCategory =
+          categoryFilter === "all" || product.category === categoryFilter;
 
-    if (priceSort === "price-desc") {
-      return b.price - a.price;
-    }
+        return matchesQuery && matchesCategory;
+      })
+      .sort((a, b) => {
+        if (priceSort === "price-asc") return a.price - b.price;
+        if (priceSort === "price-desc") return b.price - a.price;
+        return 0;
+      });
+  }, [products, query, categoryFilter, priceSort]);
 
-    return 0;
-  });
+  if (loading) {
+    return <p>Loading products...</p>;
+  }
 
-  useEffect(() => {
-    if (selectedProduct) {
-      document.title = selectedProduct!.title;
-      return;
-    }
-    document.title = `Products: ${finalProducts.length}`;
-  }, [selectedProduct, finalProducts.length]);
-
-  useEffect(() => {
-    localStorage.setItem("catalog-category", categoryFilter);
-  }, [categoryFilter]);
-
-  useEffect(() => {
-    localStorage.setItem("catalog-price", priceSort);
-  }, [priceSort]);
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <>
       <ProductList
-        products={finalProducts}
+        products={filteredProducts}
         selectedProductId={selectedProductId}
         onSelect={handleSelect}
       />
