@@ -123,7 +123,31 @@ function App() {
         </main>
 
         <footer className="border-t border-neutral-300 px-8 py-5 text-center text-sm text-neutral-500">
-          <p>Made by NetKamaa__ 2026</p>
+          <div className="flex flex-col items-center gap-2">
+            <p>Made by NetKamaa__ · 2026</p>
+
+            <div className="flex items-center gap-4">
+              <a
+                href="https://github.com/NetKamaa"
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-neutral-900"
+              >
+                GitHub
+              </a>
+
+              <span>·</span>
+
+              <a
+                href="https://www.linkedin.com/in/pavel-doroshkevich-3518183a3/"
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-neutral-900"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
         </footer>
       </div>
     </div>
