@@ -81,32 +81,52 @@ function App() {
   }, [products, query, categoryFilter, priceSort]);
 
   if (loading) {
-    return <p>Loading products...</p>;
+    return <p className="p-6 text-lg">Loading products...</p>;
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <p className="p-6 text-lg text-red-600">{error}</p>;
   }
 
   return (
-    <>
-      <ProductList
-        products={filteredProducts}
-        selectedProductId={selectedProductId}
-        onSelect={handleSelect}
-      />
+    <div className="min-h-screen bg-neutral-200 px-6 py-4">
+      <div className="mx-auto flex min-h-[calc(100vh-2rem)] max-w-400 flex-col bg-neutral-100">
+        <header className="border-b border-neutral-300 px-8 py-6 text-center">
+          <h1 className="text-4xl font-semibold tracking-tight">
+            Product Catalog
+          </h1>
+        </header>
 
-      <SearchBar
-        query={query}
-        onQueryChange={handleQuery}
-        categoryFilter={categoryFilter}
-        onCategoryChange={handleCategory}
-        priceSort={priceSort}
-        onSortChange={handlePrice}
-      />
+        <main className="grid flex-1 grid-cols-[180px_1fr_220px] gap-8 px-8 py-8">
+          <aside className="border-r border-neutral-300 pr-6">
+            <ProductList
+              products={filteredProducts}
+              selectedProductId={selectedProductId}
+              onSelect={handleSelect}
+            />
+          </aside>
 
-      <ProductDetails product={selectedProduct} />
-    </>
+          <section className="min-w-0">
+            <ProductDetails product={selectedProduct} />
+          </section>
+
+          <aside className="border-l border-neutral-300 pl-6">
+            <SearchBar
+              query={query}
+              onQueryChange={handleQuery}
+              categoryFilter={categoryFilter}
+              onCategoryChange={handleCategory}
+              priceSort={priceSort}
+              onSortChange={handlePrice}
+            />
+          </aside>
+        </main>
+
+        <footer className="border-t border-neutral-300 px-8 py-5 text-center text-sm text-neutral-500">
+          <p>Made by NetKamaa__ 2026</p>
+        </footer>
+      </div>
+    </div>
   );
 }
 

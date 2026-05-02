@@ -9,6 +9,7 @@ export interface IProduct {
   category: TCategory;
   inStock: boolean;
   description: string;
+  imageUrl: string;
 }
 
 export type TSeedProduct = Omit<IProduct, "id">;

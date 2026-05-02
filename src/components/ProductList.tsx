@@ -14,7 +14,7 @@ export function ProductList({
 }: IProductListProps) {
   return (
     <>
-      <div>
+      <div className="flex flex-col gap-2">
         {products.map((product) => (
           <ProductCard
             key={product.id}

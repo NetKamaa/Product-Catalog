@@ -9,12 +9,18 @@ interface ICardProps {
 export function ProductCard({ product, isSelected, onSelect }: ICardProps) {
   return (
     <>
-      <div
-        className={`${isSelected ? "card-selected" : ""}`}
+      <button
+        type="button"
         onClick={() => onSelect(product.id)}
+        className={[
+          "w-full rounded-xl px-3 py-2 text-left text-lg transition",
+          isSelected
+            ? "bg-neutral-900 text-white"
+            : "bg-transparent text-neutral-900 hover:bg-neutral-300/60",
+        ].join(" ")}
       >
-        <h3>{product.title}</h3>
-      </div>
+        {product.title}
+      </button>
     </>
   );
 }

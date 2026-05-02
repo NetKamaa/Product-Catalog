@@ -41,6 +41,7 @@ export type ProductMinAggregateOutputType = {
   category: $Enums.Category | null
   inStock: boolean | null
   description: string | null
+  imageUrl: string | null
   createdAt: Date | null
 }
 
@@ -51,6 +52,7 @@ export type ProductMaxAggregateOutputType = {
   category: $Enums.Category | null
   inStock: boolean | null
   description: string | null
+  imageUrl: string | null
   createdAt: Date | null
 }
 
@@ -61,6 +63,7 @@ export type ProductCountAggregateOutputType = {
   category: number
   inStock: number
   description: number
+  imageUrl: number
   createdAt: number
   _all: number
 }
@@ -81,6 +84,7 @@ export type ProductMinAggregateInputType = {
   category?: true
   inStock?: true
   description?: true
+  imageUrl?: true
   createdAt?: true
 }
 
@@ -91,6 +95,7 @@ export type ProductMaxAggregateInputType = {
   category?: true
   inStock?: true
   description?: true
+  imageUrl?: true
   createdAt?: true
 }
 
@@ -101,6 +106,7 @@ export type ProductCountAggregateInputType = {
   category?: true
   inStock?: true
   description?: true
+  imageUrl?: true
   createdAt?: true
   _all?: true
 }
@@ -198,6 +204,7 @@ export type ProductGroupByOutputType = {
   category: $Enums.Category
   inStock: boolean
   description: string
+  imageUrl: string
   createdAt: Date
   _count: ProductCountAggregateOutputType | null
   _avg: ProductAvgAggregateOutputType | null
@@ -231,6 +238,7 @@ export type ProductWhereInput = {
   category?: Prisma.EnumCategoryFilter<"Product"> | $Enums.Category
   inStock?: Prisma.BoolFilter<"Product"> | boolean
   description?: Prisma.StringFilter<"Product"> | string
+  imageUrl?: Prisma.StringFilter<"Product"> | string
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
 }
 
@@ -241,6 +249,7 @@ export type ProductOrderByWithRelationInput = {
   category?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -254,6 +263,7 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   category?: Prisma.EnumCategoryFilter<"Product"> | $Enums.Category
   inStock?: Prisma.BoolFilter<"Product"> | boolean
   description?: Prisma.StringFilter<"Product"> | string
+  imageUrl?: Prisma.StringFilter<"Product"> | string
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
 }, "id">
 
@@ -264,6 +274,7 @@ export type ProductOrderByWithAggregationInput = {
   category?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.ProductCountOrderByAggregateInput
   _avg?: Prisma.ProductAvgOrderByAggregateInput
@@ -282,6 +293,7 @@ export type ProductScalarWhereWithAggregatesInput = {
   category?: Prisma.EnumCategoryWithAggregatesFilter<"Product"> | $Enums.Category
   inStock?: Prisma.BoolWithAggregatesFilter<"Product"> | boolean
   description?: Prisma.StringWithAggregatesFilter<"Product"> | string
+  imageUrl?: Prisma.StringWithAggregatesFilter<"Product"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
 }
 
@@ -292,6 +304,7 @@ export type ProductCreateInput = {
   category: $Enums.Category
   inStock: boolean
   description: string
+  imageUrl: string
   createdAt?: Date | string
 }
 
@@ -302,6 +315,7 @@ export type ProductUncheckedCreateInput = {
   category: $Enums.Category
   inStock: boolean
   description: string
+  imageUrl: string
   createdAt?: Date | string
 }
 
@@ -312,6 +326,7 @@ export type ProductUpdateInput = {
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -322,6 +337,7 @@ export type ProductUncheckedUpdateInput = {
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -332,6 +348,7 @@ export type ProductCreateManyInput = {
   category: $Enums.Category
   inStock: boolean
   description: string
+  imageUrl: string
   createdAt?: Date | string
 }
 
@@ -342,6 +359,7 @@ export type ProductUpdateManyMutationInput = {
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -352,6 +370,7 @@ export type ProductUncheckedUpdateManyInput = {
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -362,6 +381,7 @@ export type ProductCountOrderByAggregateInput = {
   category?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -376,6 +396,7 @@ export type ProductMaxOrderByAggregateInput = {
   category?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -386,6 +407,7 @@ export type ProductMinOrderByAggregateInput = {
   category?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -426,6 +448,7 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   category?: boolean
   inStock?: boolean
   description?: boolean
+  imageUrl?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["product"]>
 
@@ -436,6 +459,7 @@ export type ProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   category?: boolean
   inStock?: boolean
   description?: boolean
+  imageUrl?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["product"]>
 
@@ -446,6 +470,7 @@ export type ProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   category?: boolean
   inStock?: boolean
   description?: boolean
+  imageUrl?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["product"]>
 
@@ -456,10 +481,11 @@ export type ProductSelectScalar = {
   category?: boolean
   inStock?: boolean
   description?: boolean
+  imageUrl?: boolean
   createdAt?: boolean
 }
 
-export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "price" | "category" | "inStock" | "description" | "createdAt", ExtArgs["result"]["product"]>
+export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "price" | "category" | "inStock" | "description" | "imageUrl" | "createdAt", ExtArgs["result"]["product"]>
 
 export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Product"
@@ -471,6 +497,7 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     category: $Enums.Category
     inStock: boolean
     description: string
+    imageUrl: string
     createdAt: Date
   }, ExtArgs["result"]["product"]>
   composites: {}
@@ -901,6 +928,7 @@ export interface ProductFieldRefs {
   readonly category: Prisma.FieldRef<"Product", 'Category'>
   readonly inStock: Prisma.FieldRef<"Product", 'Boolean'>
   readonly description: Prisma.FieldRef<"Product", 'String'>
+  readonly imageUrl: Prisma.FieldRef<"Product", 'String'>
   readonly createdAt: Prisma.FieldRef<"Product", 'DateTime'>
 }
     
